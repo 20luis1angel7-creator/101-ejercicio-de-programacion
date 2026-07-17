@@ -15,6 +15,9 @@ def countdown():
     nums = 5
     speed = 2
 
+    if nums < 0:
+        return "the number should major 0"
+
     while nums >= 0:
         print(nums)
         time.sleep(speed)
