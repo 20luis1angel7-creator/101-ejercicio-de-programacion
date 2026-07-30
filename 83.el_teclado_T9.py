@@ -42,6 +42,9 @@ def teclado_T9():
     }
 
     for sep in sepa:
+        if sep <= 1 or sep >= 10:
+            print("error debe de ser un numero de 2 al 9")
+            
         valor = sep[0]
         cant = len(sep)
 
