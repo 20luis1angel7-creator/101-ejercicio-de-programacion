@@ -66,7 +66,13 @@ def fichero():
 
     if exist is False:
         with open("text.txt", "w") as archivo:
-            contenido = archivo.write("\n")
+            while True:
+                texto = input()
+
+                if texto == "":
+                    break
+
+                contenido = archivo.write(texto + "\n")
 
     elif exist:
         opcion = input("continuar escribiendo o borrar el contenido? ")
@@ -78,18 +84,22 @@ def fichero():
 
             while True:
                 texto = input()
-                print(repr(texto))
+                # print(repr(texto))
 
-                if texto == '':#
+                if texto == "":
                     break
 
                 with open("text.txt", "a") as archivo:
                     archivo.write(texto + "\n")
-
-                # with open("text.txt", "r") as archivo:
-                #     contenido = archivo.read()
-                #     print(contenido)
+                    
         elif opcion == "borrar":
+            
             with open("text.txt", "w") as archivo:
-                contenido = archivo.write(texto + "\n")
+                while True:
+                    texto = input()
+
+                    if texto == "":
+                        break
+
+                    contenido = archivo.write(texto + "\n")
 fichero()
