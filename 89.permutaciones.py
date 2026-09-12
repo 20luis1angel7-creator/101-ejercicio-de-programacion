@@ -30,24 +30,24 @@
 
 
 def combinaciones(word, combinar, utilizadas):
-    
     letters = list(word)
-    # print(letters)
+
+    if len(combinar) == len(letters):
+        print("".join(combinar))
+        return
+            
     for i in word:
         if i in utilizadas:
-            print("kkkk")
+            # print("kkkk")
             continue
-        print(i)
+
+        # print(i)
         utilizadas.append(i)
         combinar.append(i)
-        print(combinar)
+        # print(combinar)
         combinaciones(word, combinar, utilizadas)
+        utilizadas.pop()
         combinar.pop()
-        print(utilizadas)
-        if len(combinar) == len(letters):
-            return print("".join(combinar))
-        
-        
-        
+        # print(utilizadas)  
 
 combinaciones("sol", [], [])
