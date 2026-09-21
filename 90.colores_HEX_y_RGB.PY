@@ -6,7 +6,7 @@
 #  * HEX a RGB: hex: #000000 -> (r: 0, g: 0, b: 0)
 #  */
 
-
+#obtimizado
 def RGB(numRGB):
     result = []
     
