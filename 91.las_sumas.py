@@ -18,23 +18,26 @@
 #5. Complejidad temporal 
 #6. Manejo de elementos repetidos
 
+resultado_combinacion = []
 def sumas(lista, objetivo, indice, sumaActual, combinacion):
+    
+
     if (sumaActual == objetivo):
-        return combinacion
+        resultado_combinacion.append(combinacion.copy())
+        return
+
+    if (indice >= len(lista)):
+            return sumaActual
+    
     if (sumaActual < objetivo):
-        sumaActual += lista[indice]
-        combinacion.append(lista[indice])
-        print("suma:", sumaActual)
-        print(combinacion)
+        sumaNueva = sumaActual + lista[indice]
 
-        print(indice)
-        print(lista[indice])
+        combinacionNueva = combinacion.copy()
+        combinacionNueva.append(lista[indice])
 
-        
+        result = sumas(lista, objetivo, indice + 1, sumaNueva, combinacionNueva)
 
         result = sumas(lista, objetivo, indice + 1, sumaActual, combinacion)
-
-    if (indice == len(lista)):
-        return sumaActual
     
-sumas([1, 5, 3, 2], 6, 0, 0, [])
+sumas([1, 5, 3, 2, 4], 6, 0, 0, [])
+print(resultado_combinacion)
