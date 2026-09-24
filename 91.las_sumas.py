@@ -20,7 +20,6 @@
 
 resultado_combinacion = []
 def sumas(lista, objetivo, indice, sumaActual, combinacion):
-    
 
     if (sumaActual == objetivo):
         resultado_combinacion.append(combinacion.copy())
