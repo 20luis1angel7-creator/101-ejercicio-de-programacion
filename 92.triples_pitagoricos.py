@@ -8,25 +8,15 @@
 #  *   formados por (3, 4, 5) y (6, 8, 10).
 #  */
 
-import math
 
 def triple_pitagorico(n):
-    lista_sum_number = []
     result = []
-    for i in range(1, n + 1):
-        multi = i * i
-        lista_sum_number.append(multi)
+    for a in range(1, n + 1):
+        for b in range(a + 1, n + 1):
+            for c in range(b + 1, n + 1):
+                if a ** 2 + b ** 2 == c ** 2:
+                    result.append((a, b, c))
 
-    for l in lista_sum_number:
-        for s in lista_sum_number:
-            suma = s + l
-            if suma == lista_sum_number[-1]:
-                print(
-                    int(math.sqrt(s)),
-                    int(math.sqrt(l)),
-                    int(math.sqrt(suma))
-                )
-                
+    return result
 
-    print(lista_sum_number)
-triple_pitagorico(5)
+print(triple_pitagorico(10))
