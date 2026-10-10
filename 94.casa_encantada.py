@@ -71,6 +71,7 @@ def cuadrilla(c, f):
 
     fila = 0
     columna = 0
+    
 
     cuadricula[0][0] = "🚪"
     cuadricula[3][2] = "🍭"
@@ -91,53 +92,94 @@ def cuadrilla(c, f):
 
         if 0 <= columna < c and 0 <= fila < f:
             if mov == "d" and columna < c - 1:
-                columna += 1
-                acertijo()
+                nueva_columna = columna + 1
                 if fantasma():
-                    fantasmas[fila][columna] = "👻"
+                    print("hay un fantasma: 👻")
+                    respuesta1 = acertijo()
+                    respuesta2 = acertijo()
+                    
+                    if respuesta1 and respuesta2:
+                        columna += 1
+                        fantasmas[fila][nueva_columna] = "👻"
+                else:
+                    respuesta1 = acertijo()
+                    if respuesta1:
+                        columna += 1
             elif mov == "a" and columna > 0:
-                if acertijo():
-                    columna -= 1
-                    if fantasma():
-                        fantasmas[fila][columna] = "👻"
+                nueva_columna = columna - 1
+                if fantasma():
+                    print("hay un fantasma: 👻")
+                    respuesta1 = acertijo()
+                    respuesta2 = acertijo()
+                    
+                    if respuesta1 and respuesta2:
+                        columna -= 1
+                        fantasmas[fila][nueva_columna] = "👻"
+                else:
+                    respuesta1 = acertijo()
+                    if respuesta1:
+                        columna -= 1
             elif mov == "s" and fila < f - 1:
-                if acertijo():
-                    fila += 1
-                    if fantasma():
-                        fantasmas[fila][columna] = "👻"
+                nueva_fila = fila + 1
+
+                if fantasma():
+                    print("hay un fantasma: 👻")
+                    respuesta1 = acertijo()
+                    respuesta2 = acertijo()
+                    
+                    if respuesta1 and respuesta2:
+                        fila += 1
+                        fantasmas[nueva_fila][columna] = "👻"
+                else:
+                        respuesta1 = acertijo()
+                        if respuesta1:
+                            fila += 1
+
             elif mov == "w" and fila > 0:
-                if acertijo():
-                    fila -= 1
-                    if fantasma():
-                        fantasmas[fila][columna] = "👻"
+                nueva_fila = fila - 1
+                
+                if fantasma():
+                    print("hay un fantasma: 👻")
+                    respuesta1 = acertijo()
+                    respuesta2 = acertijo()
+                    fantasmas[nueva_fila][columna] = "👻"
+                    if respuesta1 and respuesta2:
+                        fila -= 1
+                        fantasmas[nueva_fila][columna] = "👻"
+                else:
+                    respuesta1 = acertijo()
+                    if respuesta1:
+                        fila -= 1
             else:
                 print("solo se puede: s, a, d, w ")
         else: 
             print("te saliste de las casillas")
-        
-    
+    print("")
+    print("   🍭 ¡Has encontrado los dulces!   ")
+    print("   ¡Has escapado de la mansión! 🎃  ")
+
 def acertijo():
     acertijos = [
                 ["¿Qué tiene agujas pero no cose?", "reloj"],
                 ["¿Qué tiene dientes pero no puede comer?", "peine"],
                 ["¿Qué tiene cuello pero no cabeza?", "botella"],
-                ["¿Qué tiene hojas pero no es un árbol?", "libro"],
-                ["¿Qué tiene manos pero no puede aplaudir?", "reloj"],
-                ["¿Qué tiene un ojo pero no puede ver?", "aguja"],
-                ["¿Qué sube y baja pero siempre está en el mismo lugar?", "escalera"],
-                ["¿Qué tiene patas pero no puede caminar?", "mesa"],
-                ["¿Qué se moja mientras seca?", "toalla"],
-                ["¿Qué tiene ciudades, pero no casas; tiene montañas, pero no árboles?", "mapa"],
-                ["¿Qué cuanto más le quitas, más grande se vuelve?", "agujero"],
-                ["¿Qué tiene cabeza y cola, pero no tiene cuerpo?", "moneda"],
-                ["¿Qué corre pero no tiene piernas?", "agua"],
-                ["¿Qué tiene teclas pero no puede abrir ninguna puerta?", "piano"],
-                ["¿Qué puede viajar por todo el mundo sin moverse de una esquina?", "sello"],
-                ["¿Qué tiene alas pero no puede volar?", "molino"],
-                ["¿Qué tiene una cara y dos manos, pero no tiene brazos?", "reloj"],
-                ["¿Qué desaparece en cuanto dices su nombre?", "silencio"],
-                ["¿Qué tiene muchos agujeros pero puede contener agua?", "esponja"],
-                ["¿Qué entra al agua pero nunca se moja?", "sombra"]
+                # ["¿Qué tiene hojas pero no es un árbol?", "libro"],
+                # ["¿Qué tiene manos pero no puede aplaudir?", "reloj"],
+                # ["¿Qué tiene un ojo pero no puede ver?", "aguja"],
+                # ["¿Qué sube y baja pero siempre está en el mismo lugar?", "escalera"],
+                # ["¿Qué tiene patas pero no puede caminar?", "mesa"],
+                # ["¿Qué se moja mientras seca?", "toalla"],
+                # ["¿Qué tiene ciudades, pero no casas; tiene montañas, pero no árboles?", "mapa"],
+                # ["¿Qué cuanto más le quitas, más grande se vuelve?", "agujero"],
+                # ["¿Qué tiene cabeza y cola, pero no tiene cuerpo?", "moneda"],
+                # ["¿Qué corre pero no tiene piernas?", "agua"],
+                # ["¿Qué tiene teclas pero no puede abrir ninguna puerta?", "piano"],
+                # ["¿Qué puede viajar por todo el mundo sin moverse de una esquina?", "sello"],
+                # ["¿Qué tiene alas pero no puede volar?", "molino"],
+                # ["¿Qué tiene una cara y dos manos, pero no tiene brazos?", "reloj"],
+                # ["¿Qué desaparece en cuanto dices su nombre?", "silencio"],
+                # ["¿Qué tiene muchos agujeros pero puede contener agua?", "esponja"],
+                # ["¿Qué entra al agua pero nunca se moja?", "sombra"]
             ]
     aleatorio = random.choice(acertijos)
     preg = aleatorio[0]
@@ -146,7 +188,7 @@ def acertijo():
 
     resp_usuario = input("Respuesta: ")
 
-    if resp_usuario.lower() == resp:
+    if resp_usuario.lower().strip() == resp:
         return True
     else:
         print("❌ Respuesta incorrecta. No puedes avanzar.")
@@ -158,7 +200,6 @@ def fantasma():
     numero_rando = random.randint(1, 100)
 
     if numero_rando <= 10:
-        
         return True
     else:
         return False
